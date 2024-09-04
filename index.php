@@ -9,13 +9,14 @@ use Demander\Models\Frame;
 $app = new Slim();
 
 $app->get('/', function () {
-    $frame = new Frame('');
+    /*$frame = new Frame('');
     $page = new Page();
     $page->setTemplate('index', 
         array(
             "frames" => $frame->getFrames(),
         )
-    );
+    );*/
+    echo "Hello, World!";
 });
 
 $app->config('debug', true);
