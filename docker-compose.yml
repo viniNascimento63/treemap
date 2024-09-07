@@ -1,16 +1,8 @@
-version: '3.8'
-
+version: '3'
 services:
   web:
-    image: php:8.1-apache
-    container_name: treemap-web
+    image: php:7.4-apache
     volumes:
-      - ./treemap:/var/www/html
+      - ./:/var/www/html/treemap
     ports:
-      - "8080:80"
-    networks:
-      - treemap-network
-
-networks:
-  treemap-network:
-    driver: bridge
+      - "80:80"
