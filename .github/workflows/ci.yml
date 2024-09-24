@@ -1,9 +1,24 @@
 name: Lint
 on:
   pull_request:
+  push: 
+    branches:
+      - main
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: firehed/lint-php-action@v1
+
+  Discord_notification:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Run Discord Webhook
+        uses: mrrobotdotapp/classic-discord-webhook@main
+        with:
+          id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+          token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+          #threadId: ${{ secrets.DISCORD_WEBHOOK_THREAD_ID }} # Optional
