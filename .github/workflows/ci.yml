@@ -1,9 +1,23 @@
 name: Lint
 on:
   pull_request:
+  push: 
+    branches:
+      - main
 jobs:
   lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: firehed/lint-php-action@v1
+
+  uses: ehsanfox/discord.js-webhook
+  with:
+    # Important/Required Data
+    id: ${{ secrets.DISCORD_WEBHOOK_ID }}
+    token: ${{ secrets.DISCORD_WEBHOOK_TOKEN }}
+
+    # Optional Data
+    content: Hi, this is a text for the content
+    
+    # Add more options if u want...
