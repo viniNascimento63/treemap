@@ -1,0 +1,8 @@
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true">
+    <testsuites>
+        <testsuite name="Project Test Suite">
+            <directory>./tests</directory> <!-- Altere para o caminho do diretório de testes -->
+        </testsuite>
+    </testsuites>
+</phpunit>
