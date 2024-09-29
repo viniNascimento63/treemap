@@ -1,30 +1,26 @@
 name: Run PHPUnit tests
 
 on:
-  # Roda o workflow em pull requests abertos
   pull_request:
     branches:
-      - main 
+      - main
+
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # Checa o código do repositório
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Configura o PHP
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'  # Versão do PHP
-          tools: composer      # Instala o Composer
+          php-version: '8.3'
+          tools: composer
 
-      # Instala as dependências via Composer
       - name: Install dependencies
         run: composer install --prefer-dist --no-progress --no-suggest
 
-      # Executa os testes
       - name: Run PHPUnit
         run: vendor/bin/phpunit --testdox
